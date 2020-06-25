@@ -43,6 +43,14 @@ class DroneSchema(ma.Schema):
 drones_schema = DroneSchema(many=True)
 
 
+@app.route('/', methods=['GET'])
+def Intro_message():
+    if request.method == 'GET':
+        Message = 'Hello! add the api/v1/droneList endpoints to the URL to view List'
+        return Message
+    return jsonify({'GET Request': 'Failure'}), 404
+
+
 # Create a drone
 @app.route('/api/v1/droneList', methods=['POST'])
 def add_drone():
